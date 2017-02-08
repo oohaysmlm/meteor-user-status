@@ -97,19 +97,7 @@ statusEvents.on "connectionActive", (advice) ->
       'status.lastActivity': null
   return
 
-# Reset online status on startup (users will reconnect)
-onStartup = (selector = {}) ->
-  Meteor.users.update selector,
-    {
-      $set: {
-        "status.online": false
-      },
-      $unset: {
-        "status.idle": null
-        "status.lastActivity": null
-      }
-    },
-    { multi: true }
+
 
 ###
   Local session modifification functions - also used in testing
@@ -190,7 +178,7 @@ activeSession = (connection, date, userId) ->
 ###
   Handlers for various client-side events
 ###
-Meteor.startup(onStartup)
+#Meteor.startup(onStartup)
 
 # Opening and closing of DDP connections
 Meteor.onConnection (connection) ->
