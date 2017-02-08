@@ -231,7 +231,6 @@ UserStatus =
 
 # Internal functions, exported for testing
 StatusInternals = {
-  onStartup,
   addSession,
   removeSession,
   loginSession,
